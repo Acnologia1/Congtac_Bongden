@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Công tắc và bóng đèn</title>
+</head>
+<body>
+
+<script>
+    function SwitchButton(status) {
+
+        this.status = status;
+        //this.lamp = lamp;
+        this.connect = function (Elec) {
+            var Elec = new Electriclamp();
+            if(this.status == true)
+            {
+                Elec.TurnOn();
+                document.write('Bật công tắc,bật bóng đèn');
+                document.write('<br/>');
+            }
+            else{
+                Elec.TurnOff();
+                document.write('Tắt công tắc,tắt bóng đèn');
+                document.write('<br/>');
+            }
+        }
+        this.switchOff = function () {
+            //document.write('tắt');
+            this.status = false;
+        }
+        this.switchOn = function () {
+            //document.write('Bật');
+            this.status = true;
+        }
+    }
+
+    function Electriclamp(status) {
+        this.status = status;
+        this.TurnOff = function () {
+            this.status = false;
+            //document.write('Tắt');
+        }
+        this.TurnOn = function () {
+            this.status = true;
+            //document.write('bật');
+        }
+    }
+
+
+    var congtac = new SwitchButton(true);
+    var bongden = new Electriclamp(true);
+
+    function bongden1() {
+        for(i = 0;i<10;i++) {
+            congtac.switchOn();
+            congtac.connect(bongden);
+            congtac.switchOff();
+            congtac.connect(bongden);
+        }
+    }
+
+    bongden1();
+
+</script>
+</body>
+</html>
